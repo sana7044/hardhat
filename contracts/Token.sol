@@ -1,6 +1,10 @@
 //SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.5.0 <0.9.0;
 
+//with the use of this import statement we can debug our code.
+//This line gives us power to write the JS code in solidity.
+import "hardhat/console.sol";
+
 contract Token {
     string public name = "HardHat Tutorial";
     string public symbol = "HHT";
@@ -24,6 +28,13 @@ contract Token {
 
     //function to transfer tokens
     function transfer(address to, uint amount) external {
+        //line to debug code
+        console.log("**Sender balance is %s tokens:**", balances[msg.sender]);
+        console.log(
+            "**Sender is sending %s tokens to %s address**",
+            amount,
+            to
+        );
         //here we will check require balance. Sender k pas itna balance hai bhi k ni jo wo transfer karne ka soch raha h.
         require(balances[msg.sender] >= amount, "Not Enough Tokens");
 
